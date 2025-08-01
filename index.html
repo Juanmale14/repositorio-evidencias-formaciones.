@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -555,22 +555,7 @@
             }
         }
     </style>
-<style type="text/css">
-.grande { font-size: 60px; }
-</style>
-<script>
-// Escribir aqui el código Javascript
-</script>
-<style>
-            @keyframes slideIn {
-                from { transform: translateX(100%); opacity: 0; }
-                to { transform: translateX(0); opacity: 1; }
-            }
-            @keyframes slideOut {
-                from { transform: translateX(0); opacity: 1; }
-                to { transform: translateX(100%); opacity: 0; }
-            }
-        </style></head>
+</head>
 <body>
     <div class="container">
         <div class="header">
@@ -578,13 +563,13 @@
             <p>Recopila y comparte evidencias de aprendizaje en tiempo real</p>
         </div>
 
-        <div id="sessionControlPanel" class="session-control-panel" style="display: block;">
+        <div id="sessionControlPanel" class="session-control-panel" style="display: none;">
             <h3>🎛️ Control de Sesión</h3>
             <div class="session-info-grid">
                 <div class="session-info-item">
                     <label>ID de Sesión:</label>
                     <div class="session-id-display">
-                        <span id="sessionIdDisplay" class="session-id">e2720b52-9345-44ca-afcf-22164e83b80a</span>
+                        <span id="sessionIdDisplay" class="session-id">Iniciando...</span>
                         <button id="copySessionIdBtn" class="copy-btn" title="Copiar ID">📋</button>
                     </div>
                 </div>
@@ -606,7 +591,7 @@
                     <button id="participantBtn" class="role-btn">👥 Participante</button>
                 </div>
                 
-                <div id="presenterControls" class="presenter-controls" style="display: block;">
+                <div id="presenterControls" class="presenter-controls">
                     <div class="theme-selector">
                         <label for="colorPicker">Color del tema:</label>
                         <input type="color" id="colorPicker" class="color-picker" value="#3b82f6">
@@ -617,44 +602,46 @@
                     <div class="connection-section">
                         <input type="text" id="sessionIdInput" placeholder="Introduce el ID de sesión" class="session-input">
                         <button id="connectBtn" class="control-btn">🔌 Conectar a sesión</button>
-                        <div id="connectionStatus" class="connection-status disconnected">Desconectado</div>
+                        <div id="connectionStatus" class="connection-status">Desconectado</div>
                     </div>
                 </div>
             </div>
         </div>
 
         <div class="tabs">
-            <button class="tab-button" onclick="switchTab('evidencias')">📝 Evidencias</button>
-            <button class="tab-button active" onclick="switchTab('resumen')">📊 Resumen Final</button>
+            <button class="tab-button active" onclick="switchTab('evidencias')">📝 Evidencias</button>
+            <button class="tab-button" onclick="switchTab('resumen')">📊 Resumen Final</button>
         </div>
 
-        <div id="evidencias" class="tab-content">
+        <div id="evidencias" class="tab-content active">
             <h2 style="margin-bottom: 20px; color: var(--primary-color);">Nuestras evidencias del aprendizaje en esta formación</h2>
             
             <div id="participationNotice" class="participation-notice" style="display: none;">
                 <p>⏸️ La participación está pausada por el presentador. Espera a que se reactive para enviar evidencias.</p>
             </div>
 
-            <div class="form-section" id="evidenceFormSection" style="opacity: 1; pointer-events: auto;">
+            <div class="form-section" id="evidenceFormSection">
                 <form id="evidenceForm">
                     <div class="form-group">
                         <label for="evidenceTitle">Título de la Evidencia:</label>
-                        <input type="text" id="evidenceTitle" required="" placeholder="Ej: Proyecto final de módulo 1">
+                        <input type="text" id="evidenceTitle" required placeholder="Ej: Proyecto final de módulo 1">
                     </div>
                     
                     <div class="form-group">
                         <label for="evidenceUrl">URL de la Evidencia:</label>
-                        <input type="url" id="evidenceUrl" required="" placeholder="https://ejemplo.com/mi-evidencia">
+                        <input type="url" id="evidenceUrl" required placeholder="https://ejemplo.com/mi-evidencia">
                     </div>
                     
                     <button type="submit" class="submit-btn">📤 Enviar mi evidencia</button>
                 </form>
             </div>
 
-            <div class="evidence-display" id="evidenceDisplay"><div class="no-evidence">No hay evidencias enviadas aún. ¡Sé el primero en compartir!</div></div>
+            <div class="evidence-display" id="evidenceDisplay">
+                <div class="no-evidence">No hay evidencias enviadas aún. ¡Sé el primero en compartir!</div>
+            </div>
         </div>
 
-        <div id="resumen" class="tab-content active">
+        <div id="resumen" class="tab-content">
             <h2 style="margin-bottom: 20px; color: var(--primary-color);">Resumen Final de Evidencias</h2>
             
             <div class="export-section">
@@ -662,9 +649,11 @@
                 <button class="export-btn" onclick="exportToCSV()">📊 Exportar a CSV</button>
             </div>
 
-            <div class="evidence-display" id="summaryDisplay"><div class="no-evidence">No hay evidencias para mostrar en el resumen.</div></div>
+            <div class="evidence-display" id="summaryDisplay">
+                <div class="no-evidence">No hay evidencias para mostrar en el resumen.</div>
+            </div>
         </div>
-    
+    </div>
 
     <!-- QR Modal -->
     <div id="qrModal" class="qr-modal">
@@ -1386,7 +1375,5 @@
         `;
         document.head.appendChild(style);
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'968517c586b2cbe3',t:'MTc1NDA0ODc2My4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><iframe height="1" width="1" style="position: absolute; top: 0px; left: 0px; border: medium; visibility: hidden;"></iframe>
-
-
-</body></html>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'968517c586b2cbe3',t:'MTc1NDA0ODc2My4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
